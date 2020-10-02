@@ -1,0 +1,29 @@
+# Filename:particleFilter.gam
+# export classpath:
+# Title:particleFilterType
+# background:
+# cant units:0
+# Cant Ports:4
+# 	Port Class:gui.model.port.AtomicPort
+# 	Port UniqueId:10
+# 	Port ID:Estimated_Position
+# 	Port In/Out:Out
+# 	Port Type:Integer
+# 	Port Class:gui.model.port.AtomicPort
+# 	Port UniqueId:11
+# 	Port ID:Laser_reading
+# 	Port In/Out:In
+# 	Port Type:Integer
+# 	Port Class:gui.model.port.AtomicPort
+# 	Port UniqueId:12
+# 	Port ID:Position_difference
+# 	Port In/Out:In
+# 	Port Type:Integer
+# 	Port Class:gui.model.port.AtomicPort
+# 	Port UniqueId:13
+# 	Port ID:Height
+# 	Port In/Out:In
+# 	Port Type:Integer
+# Cant Links:0
+# Initial Name:
+# Vars cant:0

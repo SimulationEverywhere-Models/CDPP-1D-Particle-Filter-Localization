@@ -1,0 +1,24 @@
+# Filename:comparator.gam
+# export classpath:
+# Title:comparatorType
+# background:
+# cant units:0
+# Cant Ports:3
+# 	Port Class:gui.model.port.AtomicPort
+# 	Port UniqueId:32
+# 	Port ID:Estimated_pose_PF
+# 	Port In/Out:In
+# 	Port Type:Integer
+# 	Port Class:gui.model.port.AtomicPort
+# 	Port UniqueId:33
+# 	Port ID:Odometry_Pos
+# 	Port In/Out:In
+# 	Port Type:Integer
+# 	Port Class:gui.model.port.AtomicPort
+# 	Port UniqueId:34
+# 	Port ID:Error
+# 	Port In/Out:Out
+# 	Port Type:Integer
+# Cant Links:0
+# Initial Name:
+# Vars cant:0

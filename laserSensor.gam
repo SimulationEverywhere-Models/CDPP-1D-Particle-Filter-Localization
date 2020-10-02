@@ -1,0 +1,24 @@
+# Filename:laserSensor.gam
+# export classpath:
+# Title:laserSensorType
+# background:
+# cant units:0
+# Cant Ports:3
+# 	Port Class:gui.model.port.AtomicPort
+# 	Port UniqueId:6
+# 	Port ID:Position
+# 	Port In/Out:In
+# 	Port Type:Integer
+# 	Port Class:gui.model.port.AtomicPort
+# 	Port UniqueId:7
+# 	Port ID:Height
+# 	Port In/Out:In
+# 	Port Type:Integer
+# 	Port Class:gui.model.port.AtomicPort
+# 	Port UniqueId:8
+# 	Port ID:Laser_Reading
+# 	Port In/Out:Out
+# 	Port Type:Integer
+# Cant Links:0
+# Initial Name:
+# Vars cant:0

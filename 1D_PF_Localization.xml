@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Models>
+	<Model name="1d_PF_Localization_Top" type="coupled" description="1D particle filter for localization using a helicopter">
+		<Inputs>
+			<Port name="speed" type="double" description="Reference speed for the helicopter"/>
+			<Port name="height" type="double" description="Reference height for the helicopter"/>
+		</Inputs>
+		<Outputs>
+			<Port name="Error" type="double" description="Difference between the localized value and odometry based value"/>
+		</Outputs>
+		<Files>
+			<File name="1d_PF_Localization_Top.ma" type="MA" location="/"/>
+			<File name="1d_PF_Localization_Top.ev" type="EV" location="/"/>
+			<File name="1d_PF_Localization_TopLOG.log" type="LOG" location="/"/>
+			<File name="1d_PF_Localization_TopOUT.out" type="OUT" location="/"/>
+		</Files>
+	</Model>
+	<Model name="flightComputer" type="coupled" description="Flight computer block consisting of the particle filter, laser sensor, and position calculation unit">
+		<Inputs>
+			<Port name="height" type="double" description="Input port for height"/>
+			<Port name="speed" type="double" description="Input port for speed"/>			
+		</Inputs>
+		<Outputs>
+			<Port name="position" type="double" description="Odometry based position output"/>
+			<Port name="estimated_position" type="double" description="Particle filter estimated position output"/>
+		</Outputs>
+	</Model>
+	<Model name="heightAndSpeedAdjustment" type="atomic" description="Adjusts the height and the speed of the helicopter">
+		<Inputs>
+			<Port name="DesiredSpeed" type="double" description="Reference speed for the helicopter"/>
+			<Port name="DesiredHeight" type="double" description="Reference height for the helicopter"/>
+		</Inputs>
+		<Outputs>
+			<Port name="ActualHeight" type="double" description="Current height of the helicopter"/>
+			<Port name="ActualSpeed" type="double" description="Actual height of the helicopter"/>
+		</Outputs>
+		<Files>
+			<File name="heightAndSpeedAdjustmentMA.ma" type="MA" location="/"/>
+			<File name="heightAndSpeedAdjustmentMA.ev" type="EV" location="/"/>
+			<File name="heightAndSpeedAdjustmentMALOG.log" type="LOG" location="/"/>
+			<File name="heightAndSpeedAdjustmentMAOUT.out" type="OUT" location="/"/>
+			<File name="heightAndSpeedAdjustmentType.cpp" type="CPP" location="/"/>
+			<File name="heightAndSpeedAdjustmentType.h" type="H" location="/"/>
+		</Files>
+	</Model>
+	<Model name="positionCalculation" type="atomic" description="Calculates the position of the helicopter">
+		<Inputs>
+			<Port name="Speed" type="double" description="Current speed of the helicopter"/>
+		</Inputs>
+		<Outputs>
+			<Port name="Position" type="double" description="Calculated position"/>
+			<Port name="Position_Diff" type="double" description="Difference between previous position and current position"/>
+		</Outputs>
+		<Files>
+			<File name="positionCalculationMA.ma" type="MA" location="/"/>
+			<File name="positionCalculationMA.ev" type="EV" location="/"/>
+			<File name="positionCalculationMALOG.log" type="LOG" location="/"/>
+			<File name="positionCalculationMAOUT.out" type="OUT" location="/"/>
+			<File name="positionCalculationType.cpp" type="CPP" location="/"/>
+			<File name="positionCalculationType.h" type="H" location="/"/>
+		</Files>
+	</Model>
+	<Model name="laserSensor" type="atomic" description="Simulates a laser sensor">
+		<Inputs>
+			<Port name="Height" type="double" description="Current height of the helicopter"/>
+			<Port name="Position" type="double" description="Current position of the helicopter"/>
+		</Inputs>
+		<Outputs>
+			<Port name="Laser_Reading" type="double" description="Laser sensor measurement"/>
+		</Outputs>
+		<Files>
+			<File name="laserSensorMA.ma" type="MA" location="/"/>
+			<File name="laserSensorMA.ev" type="EV" location="/"/>
+			<File name="laserSensorMALOG.log" type="LOG" location="/"/>
+			<File name="laserSensorMAOUT.out" type="OUT" location="/"/>
+			<File name="laserSensorType.cpp" type="CPP" location="/"/>
+			<File name="laserSensorType.h" type="H" location="/"/>
+		</Files>
+	</Model>
+	<Model name="particleFilter" type="atomic" description="Particle filter block">
+		<Inputs>
+			<Port name="Height" type="double" description="Current height of the helicopter"/>
+			<Port name="Laser_reading" type="double" description="Laser sensor measurement of the helicopter"/>
+			<Port name="Position_difference" type="double" description="Difference between previous position and current position"/>
+		</Inputs>
+		<Outputs>
+			<Port name="Estimated_Position" type="double" description="Estimated position by the particle filter"/>
+		</Outputs>
+		<Files>
+			<File name="particleFilterMA.ma" type="MA" location="/"/>
+			<File name="particleFilterMA.ev" type="EV" location="/"/>
+			<File name="particleFilterMALOG.log" type="LOG" location="/"/>
+			<File name="particleFilterMAOUT.out" type="OUT" location="/"/>
+			<File name="particleFilterType.cpp" type="CPP" location="/"/>
+			<File name="particleFilterType.h" type="H" location="/"/>
+		</Files>
+	</Model>
+	<Model name="comparator" type="atomic" description="Compares the positions and outputs the error">
+		<Inputs>
+			<Port name="Odometry_Pos" type="double" description="Position calculated using odometry"/>
+			<Port name="Estimated_pose_PF" type="double" description="Position estimated by the particle filter"/>
+		</Inputs>
+		<Outputs>
+			<Port name="Error" type="double" description="Error between the two estimations"/>
+		</Outputs>
+		<Files>
+			<File name="comparatorMA.ma" type="MA" location="/"/>
+			<File name="comparatorMA.ev" type="EV" location="/"/>
+			<File name="comparatorMALOG.log" type="LOG" location="/"/>
+			<File name="comparatorMAOUT.out" type="OUT" location="/"/>
+			<File name="comparatorType.cpp" type="CPP" location="/"/>
+			<File name="comparatorType.h" type="H" location="/"/>
+		</Files>
+	</Model>
+</Models>
